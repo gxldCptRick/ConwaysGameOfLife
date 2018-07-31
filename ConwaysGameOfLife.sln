@@ -5,6 +5,14 @@ VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConwaysGameOfLife", "ConwaysGameOfLife\ConwaysGameOfLife.csproj", "{DCC4A192-BF4B-436B-B2F2-A7046C5C3111}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonTools", "..\NumberGuessingGameGUI\CommonTools\CommonTools.csproj", "{860A8B48-09AB-42E6-8C6C-3B3EFEC4B1ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleViewOfTheGameOfLife", "ConsoleViewOfTheGameOfLife\ConsoleViewOfTheGameOfLife.csproj", "{0CCE5B7D-05A9-40B0-BC04-70855754D4DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConwaysGameOfLifeUnitTests", "ConwaysGameOfLifeUnitTests\ConwaysGameOfLifeUnitTests.csproj", "{23687EFE-47F9-498E-B76A-99E6C20BED54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConwaysGameOfLifeGui", "ConwaysGameOfLifeGui\ConwaysGameOfLifeGui.csproj", "{E32D9853-C2D0-492A-A16D-844BDFE99602}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +23,22 @@ Global
 		{DCC4A192-BF4B-436B-B2F2-A7046C5C3111}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCC4A192-BF4B-436B-B2F2-A7046C5C3111}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCC4A192-BF4B-436B-B2F2-A7046C5C3111}.Release|Any CPU.Build.0 = Release|Any CPU
+		{860A8B48-09AB-42E6-8C6C-3B3EFEC4B1ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{860A8B48-09AB-42E6-8C6C-3B3EFEC4B1ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{860A8B48-09AB-42E6-8C6C-3B3EFEC4B1ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{860A8B48-09AB-42E6-8C6C-3B3EFEC4B1ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CCE5B7D-05A9-40B0-BC04-70855754D4DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CCE5B7D-05A9-40B0-BC04-70855754D4DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CCE5B7D-05A9-40B0-BC04-70855754D4DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CCE5B7D-05A9-40B0-BC04-70855754D4DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23687EFE-47F9-498E-B76A-99E6C20BED54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23687EFE-47F9-498E-B76A-99E6C20BED54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23687EFE-47F9-498E-B76A-99E6C20BED54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23687EFE-47F9-498E-B76A-99E6C20BED54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E32D9853-C2D0-492A-A16D-844BDFE99602}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E32D9853-C2D0-492A-A16D-844BDFE99602}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E32D9853-C2D0-492A-A16D-844BDFE99602}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E32D9853-C2D0-492A-A16D-844BDFE99602}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
