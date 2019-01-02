@@ -30,7 +30,10 @@ namespace ConwaysGameOfLifeGui
 
         private void UpdateTimerInterval()
         {
-            evolutionTimer.Interval = MillisecondsPerSecond / framesPerSecond.Value;
+            if (evolutionTimer != null)
+            {
+                evolutionTimer.Interval = MillisecondsPerSecond / framesPerSecond.Value;
+            }
         }
 
         private void ClearAndRefillGrid()
@@ -58,6 +61,8 @@ namespace ConwaysGameOfLifeGui
 
         private void InitializeGrid()
         {
+            evolutionTimer?.Stop();
+            StartStopTimerBtn.Content = StartText;
             size = (int)gridSize.Value;
             ClearAndRefillGrid();
         }
@@ -86,10 +91,12 @@ namespace ConwaysGameOfLifeGui
         {
             if (evolutionTimer.Enabled)
             {
+                StartStopTimerBtn.Content = StartText;
                 evolutionTimer.Stop();
             }
             else
             {
+                StartStopTimerBtn.Content = StopText;
                 evolutionTimer.Start();
             }
         }

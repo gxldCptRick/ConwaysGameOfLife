@@ -47,7 +47,7 @@
             <Label Grid.Row="4" Content="Framerate: " HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" Margin="5, 0, 0, 0"/>
             <Label Grid.Row="4" Content="{Binding Path=Value, ElementName=framesPerSecond}" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20"/>
             <Label Grid.Row="4" Content="Per Second" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="18"/>
-            <Slider Grid.Row="4" IsSnapToTickEnabled="True" TickFrequency="1"  Value="1" Name="framesPerSecond" Grid.Column="1" VerticalAlignment="Center" Minimum="1" Maximum="60" Margin="22"/>
+            <Slider Grid.Row="4" IsSnapToTickEnabled="True" TickFrequency="1"  Value="1" Name="framesPerSecond" Grid.Column="1" ValueChanged="FramesPerSecond_ValueChanged" VerticalAlignment="Center" Minimum="1" Maximum="60" Margin="22"/>
 
         </Grid>
     </Grid>
