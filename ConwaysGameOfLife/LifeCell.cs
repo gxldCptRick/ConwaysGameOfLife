@@ -14,7 +14,7 @@ namespace ConwaysGameOfLife
 
         private int amountOfNeighborsStillAlive;
 
-        public bool IsAlive { get; set; }
+        public virtual bool IsAlive { get; set; }
 
         public LifeCell(bool isAlive)
         {
@@ -24,22 +24,15 @@ namespace ConwaysGameOfLife
 
         public event EventHandler StillAliveEvent;
 
-        private void CheckIfStayingAlive(int amountOfNeighborsWhoAreAlive)
+        private void CheckIfStayingAlive()
         {
-
-            if (amountOfNeighborsWhoAreAlive < MIN_ALIVE_NEIGHBORS_FOR_SURVIVAL
-                || amountOfNeighborsWhoAreAlive > MAX_ALIVE_NEIGHBORS_FOR_SURVIVAL)
-            {
-                IsAlive = false;
-            }
+            IsAlive = amountOfNeighborsStillAlive >= MIN_ALIVE_NEIGHBORS_FOR_SURVIVAL && amountOfNeighborsStillAlive <= MAX_ALIVE_NEIGHBORS_FOR_SURVIVAL;
         }
 
-        private void CheckIfYouAreEvolving(int amountOfNeighborsWhoAreAlive)
+        private void CheckIfYouAreEvolving()
         {
-            if (amountOfNeighborsWhoAreAlive == THE_AMOUNT_OF_NEIGHBORS_NEEDED_TO_COME_BACK_TO_LIFE)
-            {
-                IsAlive = true;
-            }
+            IsAlive = amountOfNeighborsStillAlive == THE_AMOUNT_OF_NEIGHBORS_NEEDED_TO_COME_BACK_TO_LIFE;
+            
         }
 
         private void StillAliveEventHandler(object sender, EventArgs e)
@@ -51,17 +44,17 @@ namespace ConwaysGameOfLife
         {
             if (IsAlive)
             {
-                CheckIfStayingAlive(amountOfNeighborsStillAlive);
+                CheckIfStayingAlive();
             }
             else
             {
-                CheckIfYouAreEvolving(amountOfNeighborsStillAlive);
+                CheckIfYouAreEvolving();
             }
 
             ResetAliveCounter();
         }
 
-        public void CheckIfYouAreAlive()
+        public void AnnounceState()
         {
             if (IsAlive) StillAliveEvent?.Invoke(this, EventArgs.Empty);
         }
@@ -70,13 +63,16 @@ namespace ConwaysGameOfLife
         {
             amountOfNeighborsStillAlive = 0;
         }
+        
+        public void AddNeighbor(ICell neighbor)
+        {
+            neighbor.StillAliveEvent += this.StillAliveEventHandler;
 
-        private void DoSomeJazz(object sender, EventArgs e)
+        }
+
+        public void DetermineIfStillLiving()
         {
             CheckHowManyNeighborsSurvived();
         }
-
-        public void SubscribeToEvolutionEvent(ref EventHandler Evolution) =>
-            Evolution += DoSomeJazz;
     }
 }

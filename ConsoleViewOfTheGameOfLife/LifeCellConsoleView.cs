@@ -7,35 +7,48 @@ using ConwaysGameOfLife;
 
 namespace ConsoleViewOfTheGameOfLife
 {
-    class LifeCellConsoleView
+    class LifeCellConsoleView: ICell
     {
-        private LifeCell celly;
+        private ICell celly;
 
-        public bool IsAlive { get => celly.IsAlive; }
+        public event EventHandler StillAliveEvent
+        {
+            add
+            {
+                celly.StillAliveEvent += value;
+            }
+            remove
+            {
+                celly.StillAliveEvent -= value;
+            }
+        }
+
+        public bool IsAlive { get => celly.IsAlive; set => celly.IsAlive = value; }
 
         public LifeCellConsoleView(bool isAlive)
         {
             celly = new LifeCell(isAlive);
         }
 
-        public void AddNeighbor(LifeCellConsoleView neighbor)
+        public void AddNeighbor(ICell neighbor)
         {
-            celly.AddNeighbor(neighbor.celly);
+            celly.AddNeighbor(neighbor);
         }
 
-        public void SubscribeToEvolution(ref EventHandler @event)
-        {
-            celly.SubscribeToEvolutionEvent(ref @event);
-        }
-
-        public void TalkToEverybody()
-        {
-            celly.CheckIfYouAreAlive();
-        }
 
         public string GetSymbol()
         {
             return celly.IsAlive ? " O " : " X "; 
+        }
+
+        public void AnnounceState()
+        {
+            celly.AnnounceState();
+        }
+
+        public void DetermineIfStillLiving()
+        {
+            celly.DetermineIfStillLiving();
         }
     }
 }

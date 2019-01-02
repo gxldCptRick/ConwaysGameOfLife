@@ -10,7 +10,8 @@ namespace ConwaysGameOfLife
     {
         bool IsAlive { get; set; }
         event EventHandler StillAliveEvent;
-        void CheckIfYouAreAlive();
-        void SubscribeToEvolutionEvent(ref EventHandler Evolution);
+        void AnnounceState();
+        void DetermineIfStillLiving();
+        void AddNeighbor(ICell Evolution);
     }
 }

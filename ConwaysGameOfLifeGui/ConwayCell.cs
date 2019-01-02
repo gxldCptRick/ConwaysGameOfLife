@@ -1,48 +1,30 @@
 ﻿
 using ConwaysGameOfLife;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
 namespace ConwaysGameOfLifeGui
 {
-    class ConwayCell : ICell
+    internal class ConwayCell : LifeCell, INotifyPropertyChanged
     {
-        private LifeCell celly;
-        Rectangle shape;
-        public event EventHandler StillAliveEvent
-        {
-            add => celly.StillAliveEvent += value;
-            remove => celly.StillAliveEvent -= value;
-        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void PropertyChanging([CallerMemberName]string propName = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
 
-        public bool IsAlive { get => celly.IsAlive; set => celly.IsAlive = value; }
-        public Rectangle Shape { get => shape; private set => shape = value ?? shape; }
+        protected bool isAlive;
 
-        public ConwayCell(bool isAlive)
+        public override bool IsAlive
         {
-            celly = new LifeCell(isAlive);
-            Shape = new Rectangle()
+            get => isAlive;
+            set
             {
-                Width = 100,
-                Height = 100
-            };
-
-            CheckTheStateOfTheCell(this, EventArgs.Empty);
+                isAlive = value;
+                PropertyChanging();
+            }
         }
 
-        private void CheckTheStateOfTheCell(object sender, EventArgs e) =>
-            Shape.Fill = celly.IsAlive ? Brushes.Blue: Brushes.White; 
-
-        public void SubscribeToEvolutionEvent(ref EventHandler handler)
-        {
-            celly.SubscribeToEvolutionEvent(ref handler);
-            handler += CheckTheStateOfTheCell;
-        }
-
-        public void CheckIfYouAreAlive() =>
-            celly.CheckIfYouAreAlive();
+        public ConwayCell(bool isAlive = false) : base(isAlive){}
     }
 }

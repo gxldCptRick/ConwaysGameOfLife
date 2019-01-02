@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConwaysGameController.cs" />
     <Compile Include="ICell.cs" />
     <Compile Include="LifeCell.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
